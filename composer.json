@@ -1,0 +1,16 @@
+{
+    "name": "api/p1-dwii",
+    "description": "Este projeto se baseia na criação de uma API que gerencia produtos. Ela possibilita a criação de novos produtos, a visualização detalhada dos produtos já existentes, a modificação das suas informações e, quando necessário, a exclusão dos mesmos.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Api\\P1Dwii\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lucas Retanero e Kevyn Cavalcanti"
+        }
+    ],
+    "require": {}
+}
