@@ -4,8 +4,8 @@ use Api\P1Dwii\Controller\controller;
 use Api\P1Dwii\Database;
 
 require_once '../vendor/autoload.php';
-require 'src/Database.php';
-require 'src/Controller/controller.php';
+require 'Database.php';
+require 'Controller/controller.php';
 
 $db = (new Database())->getConnection();
 $controller = new controller($db);
@@ -13,6 +13,7 @@ $controller = new controller($db);
 // Definir a rota com base na URL e no método HTTP
 $method = $_SERVER['REQUEST_METHOD'];
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$path = str_replace('/src', '', $path);
 
 // Roteamento manual
 if ($path == '/produtos' && $method == 'GET') {
@@ -35,5 +36,5 @@ if ($path == '/produtos' && $method == 'GET') {
 } else {
     // Resposta para rota não encontrada
     http_response_code(404);
-    echo json_encode(["message" => "Rota não encontrada"]);
+    echo json_encode(["message" => "Rota nao encontrada"]);
 }

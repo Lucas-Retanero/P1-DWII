@@ -10,14 +10,14 @@ class controller {
     // Retorna todos os produtos
     public function getProdutos() {
         $stmt = $this->db->query("SELECT * FROM produtos");
-        $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $produtos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         echo json_encode($produtos);
     }
     
     // Retorna os logs
     public function getLogs() {
         $stmt = $this->db->query("SELECT * FROM logs");
-        $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $logs = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         echo json_encode($logs);
     }
     
@@ -26,13 +26,13 @@ class controller {
     public function getProduto($id) {
         $stmt = $this->db->prepare("SELECT * FROM produtos WHERE id = ?");
         $stmt->execute([$id]);
-        $produto = $stmt->fetch(PDO::FETCH_ASSOC);
+        $produto = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($produto) {
             echo json_encode($produto);
         } else {
             http_response_code(404);
-            echo json_encode(["message" => "Produto não encontrado"]);
+            echo json_encode(["message" => "Produto nao encontrado"]);
         }
     }
 
@@ -86,7 +86,7 @@ class controller {
         // Obter o userInsert do produto antes de deletá-lo
         $stmt = $this->db->prepare("SELECT userInsert FROM produtos WHERE id = ?");
         $stmt->execute([$id]);
-        $produto = $stmt->fetch(PDO::FETCH_ASSOC);
+        $produto = $stmt->fetch(\PDO::FETCH_ASSOC);
     
         if ($produto) {
             // Registro de log
