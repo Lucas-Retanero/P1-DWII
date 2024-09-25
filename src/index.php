@@ -1,10 +1,10 @@
 <?php
 namespace Api\P1Dwii;
 use Api\P1Dwii\Controller\controller;
-use Api\P1Dwii\Model\Database;
+use Api\P1Dwii\Database;
 
 require_once '../vendor/autoload.php';
-require 'src/Model/db.php';
+require 'src/Database.php';
 require 'src/Controller/controller.php';
 
 $db = (new Database())->getConnection();
